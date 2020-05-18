@@ -12,7 +12,7 @@ def add_message(username, message):
     messages.append({"timestamp": now, "from": username, "message": message})
 
 
-@app.route('/', methods = ["GET","POST"])
+@app.route('/', methods=["GET","POST"])
 def index():
     """Main page with instructions"""
 
@@ -33,6 +33,7 @@ def user(username):
         message = request.form["message"]
         add_message(username, message)
         return redirect(url_for("user", username=session["username"]))
+        
     return render_template("chat.html", username=username, chat_messages=messages)
 
 if __name__=="__main__":
